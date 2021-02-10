@@ -1,0 +1,24 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Server uptime</title>
+  <meta name="description" content="uptime.190405.xyz">
+  <meta name="author" content="Daniel Florescu">
+</head>
+
+<body>
+	<ul>
+		{{#logs}}
+		<li>
+			<p>Time: <span>{{time}}</span></p>
+			<p>Ping response time: <span>{{response_time}}</span></p>
+		</li>
+		{{/logs}}
+	</ul>
+	<a href="{{prev_page_number}}">prev</a>
+	<a href="{{next_page_number}}">next</a>
+</body>
+</html>
