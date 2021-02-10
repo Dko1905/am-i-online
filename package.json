@@ -1,0 +1,12 @@
+{
+  "name": "am-i-online",
+  "version": "1.0",
+  "description": "A simple service to show and monitor internet ping and availability.",
+  "main": "dist/index.js",
+  "repository": "https://github.com/Dko1905/am-i-online.git",
+  "author": "Daniel Florescu <Daniel.florescu1905@protonmail.ch>",
+  "license": "AGPL-3.0",
+  "devDependencies": {
+    "typescript": "^4.1.4"
+  }
+}

@@ -1,0 +1,8 @@
+# NPM & YARN
+node_modules/
+yarn.lock
+package.lock
+*.log
+# TYPESCRIPT
+tsconfig.tsbuildinfo
+dist/
