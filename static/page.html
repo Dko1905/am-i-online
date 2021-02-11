@@ -7,18 +7,29 @@
   <title>Server uptime</title>
   <meta name="description" content="uptime.190405.xyz">
   <meta name="author" content="Daniel Florescu">
+
+  <style>
+	  li {
+		  border: solid thin black;
+	  }
+  </style>
 </head>
 
 <body>
+	<a href="../">home</a>
+	<a href="1">first</a>
+	<a href="{{prev_page_number}}">prev</a>
+	<a href="{{next_page_number}}">next</a>
+	<a href="{{last_page_number}}">last</a>
 	<ul>
 		{{#logs}}
 		<li>
-			<p>Time: <span>{{time}}</span></p>
-			<p>Ping response time: <span>{{response_time}}</span></p>
+			<p>Start time: <span>{{start}}</span></p>
+			<p>Stop time: <span>{{stop}}</span></p>
+			<p>Duration (seconds): <span>{{duration_in_seconds}}</span></p>
+			<p>Duration (minutes): <span>{{duration_in_minutes}}</span></p>
 		</li>
 		{{/logs}}
 	</ul>
-	<a href="{{prev_page_number}}">prev</a>
-	<a href="{{next_page_number}}">next</a>
 </body>
 </html>

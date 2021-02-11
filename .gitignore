@@ -6,3 +6,5 @@ package.lock
 # TYPESCRIPT
 tsconfig.tsbuildinfo
 dist/
+# Database
+croxydb/croxydb.json
