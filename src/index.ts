@@ -49,16 +49,21 @@ setInterval(() => {
 app.get("/", (req: Request, res: Response) => {
 	const all: {start: number, stop: number}[] = db.get("pingResponseTime")
 
-	let online = 0;
-	let online_24h = 0
+	let offline = 0
+	let offline_24h = 0
 
-	// Calculate percentage of time not being online.
+	all.forEach(val => {
+		offline += val.stop - val.start
+		if (val.stop > (Date.now() - 8.64e+7)) {
+			offline_24h += val.stop - val.start
+		}
+	})
 
 	let view;
-	if (online > 0) {
+	if (offline > 0) {
 		view = {
-			server_net_percent: `${online / all.length * 100} %`,
-			server_24h_net_percent: `${online_24h / all.length * 100} %`
+			server_nonet: `${Math.floor(offline / 1000)} seconds`,
+			server_24h_nonet: `${Math.floor(offline_24h / 1000)} seconds`
 		}
 	} else {
 		view = {
