@@ -47,6 +47,7 @@ setInterval(() => {
 }, 1000)
 
 app.get("/", (req: Request, res: Response) => {
+	const renderStart = Date.now()
 	const all: {start: number, stop: number}[] = db.get("pingResponseTime")
 
 	let offline = 0
@@ -72,9 +73,14 @@ app.get("/", (req: Request, res: Response) => {
 		}
 	}
 
-	res.type('.html').end(Mustache.render(rootTemplate, view))
+	const render = Mustache.render(rootTemplate, view)
+
+	console.info(`Took ${Date.now() - renderStart} ms to render`)
+	res.type('.html').end(render)
 })
 app.get("/page/:page", (req: Request, res: Response) => {
+	const renderStart = Date.now()
+
 	const page: number = Number.parseInt(req.params.page)
 	let all: {start: number, stop: number}[] = db.get("pingResponseTime")
 
@@ -96,7 +102,10 @@ app.get("/page/:page", (req: Request, res: Response) => {
 		last_page_number: Math.ceil(page / 10) + 1
 	}
 
-	res.type('.html').end(Mustache.render(pageTemplate, view))
+	const render = Mustache.render(pageTemplate, view)
+
+	console.info(`Took ${Date.now() - renderStart} ms to render`)
+	res.type('.html').end(render)
 })
 
 app.listen(PORT, () => {
